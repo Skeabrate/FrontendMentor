@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title='E-commerce product page'>
-  <main class='mx-auto max-w-4xl'>
+  <main class='mx-auto max-w-6xl'>
     <nav class='flex items-center justify-between border-b py-6 px-5 sm:pt-6 sm:pb-10'>
       <div class='flex gap-3 sm:gap-6 md:gap-10'>
         <button
@@ -58,8 +58,8 @@ import Layout from '../layouts/Layout.astro';
       </ul>
     </nav>
 
-    <div>
-      <div class='relative flex overflow-hidden'>
+    <div class='grid items-center md:grid-cols-2 md:gap-6 md:px-6 md:pt-16 lg:gap-20 lg:pt-24'>
+      <div class='relative flex overflow-hidden md:rounded-2xl'>
         <button
           id='slider-button-left'
           class='absolute left-6 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white md:hidden'
@@ -104,14 +104,16 @@ import Layout from '../layouts/Layout.astro';
 
       <section class='p-4'>
         <p class='font-bold text-orange-400'>SNEAKER COMPANY</p>
-        <h1 class='my-4 text-3xl font-bold'>Fall Limited Edition Sneakers</h1>
+        <h1 class='my-4 text-3xl font-bold lg:mb-8 lg:text-5xl'>Fall Limited Edition Sneakers</h1>
 
         <p class='text-gray-500'>
           These low-profile sneakers are your perfect casual wear companion. Featuring a durable
           rubber outer stole, they'll withstand everything the wearther can offer.
         </p>
 
-        <div class='my-6 flex items-center justify-between sm:flex-col sm:items-start sm:gap-1'>
+        <div
+          class='my-6 flex items-center justify-between sm:flex-col sm:items-start sm:gap-1 md:my-8'
+        >
           <p class='flex items-center gap-3 text-xl font-bold'>
             $125.00 <span class='rounded bg-orange-100 px-1.5 py-0.5 text-sm text-orange-500'
               >50%</span
@@ -121,9 +123,9 @@ import Layout from '../layouts/Layout.astro';
           <p class='text-sm font-bold text-gray-400 line-through'>$250.00</p>
         </div>
 
-        <div class='flex flex-col gap-5'>
+        <div class='flex flex-col gap-5 lg:flex-row'>
           <div class='flex h-14 rounded-lg bg-gray-100'>
-            <button class='px-6'
+            <button class='px-6 md:px-4'
               ><svg
                 width='12'
                 height='4'
@@ -145,7 +147,7 @@ import Layout from '../layouts/Layout.astro';
               class='w-full bg-gray-100 text-center font-bold'
               type='number'
             />
-            <button class='px-6'
+            <button class='px-6 md:px-4'
               ><svg
                 width='12'
                 height='12'
@@ -203,6 +205,7 @@ import Layout from '../layouts/Layout.astro';
     sliderImages.forEach((image) => {
       const sliderImage = document.createElement('img');
       sliderImage.setAttribute('src', image);
+      sliderImage.style.objectFit = 'cover';
       slider?.appendChild(sliderImage);
     });
   })();
