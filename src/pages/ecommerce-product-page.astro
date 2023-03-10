@@ -57,5 +57,90 @@ import Layout from '../layouts/Layout.astro';
         </li>
       </ul>
     </nav>
+
+    <div class='relative flex overflow-hidden'>
+      <button
+        id='slider-button-left'
+        class='absolute left-6 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white md:hidden'
+        ><svg
+          width='12'
+          height='18'
+          xmlns='http://www.w3.org/2000/svg'
+          ><path
+            d='M11 1 3 9l8 8'
+            stroke='#1D2026'
+            stroke-width='3'
+            fill='none'
+            fill-rule='evenodd'
+          ></path></svg
+        ></button
+      >
+
+      <div
+        id='slider'
+        class='flex transition-transform duration-300'
+      >
+      </div>
+
+      <button
+        id='slider-button-right'
+        class='absolute right-6 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white md:hidden'
+      >
+        <svg
+          width='13'
+          height='18'
+          xmlns='http://www.w3.org/2000/svg'
+          ><path
+            d='m2 1 8 8-8 8'
+            stroke='#1D2026'
+            stroke-width='3'
+            fill='none'
+            fill-rule='evenodd'
+          ></path></svg
+        >
+      </button>
+    </div>
   </main>
 </Layout>
+
+<script>
+  const sliderButtonLeft = document.getElementById('slider-button-left');
+  const sliderButtonRight = document.getElementById('slider-button-right');
+  const slider = document.getElementById('slider');
+  const sliderImages = [
+    '/ecommerce-product-page/image-product-1.jpg',
+    '/ecommerce-product-page/image-product-2.jpg',
+    '/ecommerce-product-page/image-product-3.jpg',
+    '/ecommerce-product-page/image-product-4.jpg',
+  ];
+
+  let currentSlideIndex = 0;
+
+  (function () {
+    sliderImages.forEach((image) => {
+      const sliderImage = document.createElement('img');
+      sliderImage.setAttribute('src', image);
+      slider?.appendChild(sliderImage);
+    });
+  })();
+
+  sliderButtonLeft?.addEventListener('click', () => {
+    if (!currentSlideIndex) {
+      currentSlideIndex = sliderImages.length - 1;
+    } else {
+      currentSlideIndex -= 1;
+    }
+
+    slider!.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+  });
+
+  sliderButtonRight?.addEventListener('click', () => {
+    if (currentSlideIndex === sliderImages.length - 1) {
+      currentSlideIndex = 0;
+    } else {
+      currentSlideIndex += 1;
+    }
+
+    slider!.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+  });
+</script>
