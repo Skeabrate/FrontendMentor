@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
             <p>Total <span class='block text-sm text-neutral-300'>/ person</span></p>
 
             <p
-              id='tip-total'
+              id='total-price'
               class='text-3xl text-teal-400'
             >
               $0.00
@@ -176,7 +176,7 @@ import Layout from '../layouts/Layout.astro';
   const tips = document.getElementById('tips') as HTMLUListElement;
 
   const tipAmount = document.getElementById('tip-amount');
-  const tipTotal = document.getElementById('tip-total');
+  const totalPrice = document.getElementById('total-price');
 
   const resetButton = document.getElementById('reset-button');
 
@@ -216,16 +216,18 @@ import Layout from '../layouts/Layout.astro';
   resetButton?.addEventListener('click', resetForm);
 
   function updateDisplay() {
-    if (activeTip && +numberOfPeopleInput?.value) {
-      tipAmount!.innerText = `$${(
-        (+billInput?.value * activeTip) /
-        100 /
-        +numberOfPeopleInput?.value
-      ).toFixed(2)}`;
-      tipTotal!.innerText = `$${((+billInput?.value * activeTip) / 100).toFixed(2)}`;
+    if (activeTip && numberOfPeopleInput?.valueAsNumber && billInput?.valueAsNumber) {
+      let totalTipValue = (billInput?.valueAsNumber * activeTip) / 100;
+      let singleTipValue = totalTipValue / numberOfPeopleInput?.valueAsNumber;
+
+      let totalPriceValue =
+        (billInput?.valueAsNumber + totalTipValue) / numberOfPeopleInput?.valueAsNumber;
+
+      tipAmount!.innerText = `$${singleTipValue.toFixed(2)}`;
+      totalPrice!.innerText = `$${totalPriceValue.toFixed(2)}`;
     } else {
       tipAmount!.innerText = '$0.00';
-      tipTotal!.innerText = '$0.00';
+      totalPrice!.innerText = '$0.00';
     }
   }
 
