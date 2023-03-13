@@ -35,9 +35,11 @@ import Layout from '../layouts/Layout.astro';
             ></path></svg
           >
           <input
-            id='bill'
+            id='bill-input'
             type='number'
             placeholder='0'
+            min='1'
+            step='0.01'
             class='mt-2 mb-6 w-full rounded-md bg-neutral-200 px-1 py-2 text-right font-bold text-teal-800 focus:outline-teal-400'
           />
         </div>
@@ -45,7 +47,10 @@ import Layout from '../layouts/Layout.astro';
         <div class='pb-6'>
           <p class='pb-4 font-bold text-neutral-400'>Select Tip %</p>
 
-          <ul class='grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-3'>
+          <ul
+            id='tips'
+            class='grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-3'
+          >
             <li>
               <button
                 class='w-full rounded-lg bg-teal-800 py-3 text-2xl font-bold text-white transition-all duration-75 hover:bg-teal-200 hover:text-teal-800 sm:py-2 sm:text-xl'
@@ -78,8 +83,11 @@ import Layout from '../layouts/Layout.astro';
             </li>
             <li>
               <input
-                type='text'
+                id='custom-tip'
+                type='number'
                 placeholder='Custom'
+                min='1'
+                step='0.5'
                 class='w-full rounded-lg bg-neutral-200 py-3 text-center text-2xl font-bold text-teal-800 focus:outline-teal-400 sm:py-2 sm:text-xl'
               />
             </li>
@@ -131,17 +139,28 @@ import Layout from '../layouts/Layout.astro';
           <div class='flex justify-between pb-8'>
             <p>Tip Amount <span class='block text-sm text-neutral-300'>/ person</span></p>
 
-            <p class='text-3xl text-teal-400'>$0</p>
+            <p
+              id='tip-amount'
+              class='text-3xl text-teal-400'
+            >
+              $0.00
+            </p>
           </div>
 
           <div class='flex justify-between pb-8'>
             <p>Total <span class='block text-sm text-neutral-300'>/ person</span></p>
 
-            <p class='text-3xl text-teal-400'>$0</p>
+            <p
+              id='tip-total'
+              class='text-3xl text-teal-400'
+            >
+              $0.00
+            </p>
           </div>
         </div>
 
         <button
+          id='reset-button'
           class='h-16 rounded-md bg-teal-500 text-xl text-teal-800 transition-colors duration-75 hover:bg-teal-200'
           >RESET</button
         >
@@ -151,10 +170,38 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  const numberOfPeopleInput = document.getElementById('number-of-people');
+  const numberOfPeopleInput = document.getElementById('number-of-people') as HTMLInputElement;
   const numberOfPeopleError = document.getElementById('number-of-people-error');
+  const billInput = document.getElementById('bill-input') as HTMLInputElement;
+  const tips = document.getElementById('tips') as HTMLUListElement;
 
-  numberOfPeopleInput?.addEventListener('input', (event) => {
+  const tipAmount = document.getElementById('tip-amount');
+  const tipTotal = document.getElementById('tip-total');
+
+  const resetButton = document.getElementById('reset-button');
+
+  const customTip = document.getElementById('custom-tip') as HTMLInputElement;
+  let activeTip = 0;
+
+  billInput.addEventListener('input', updateDisplay);
+
+  tips.addEventListener('click', (event) => {
+    if ((event.target as HTMLButtonElement).tagName.toLowerCase() === 'button') {
+      activeTip = +(event.target as HTMLButtonElement).innerHTML.split('%')[0];
+
+      updateTipsButtons(event.target);
+      updateDisplay();
+    }
+  });
+
+  customTip.addEventListener('input', (event) => {
+    activeTip = +(event.target as HTMLButtonElement).value;
+
+    updateTipsButtons(null);
+    updateDisplay();
+  });
+
+  numberOfPeopleInput.addEventListener('input', (event) => {
     if (!(event.target as HTMLInputElement).valueAsNumber) {
       numberOfPeopleInput.classList.add('input-error');
       numberOfPeopleError?.classList.add('number-of-people-error');
@@ -162,7 +209,44 @@ import Layout from '../layouts/Layout.astro';
       numberOfPeopleInput.classList.remove('input-error');
       numberOfPeopleError?.classList.remove('number-of-people-error');
     }
+
+    updateDisplay();
   });
+
+  resetButton?.addEventListener('click', resetForm);
+
+  function updateDisplay() {
+    if (activeTip && +numberOfPeopleInput?.value) {
+      tipAmount!.innerText = `$${(
+        (+billInput?.value * activeTip) /
+        100 /
+        +numberOfPeopleInput?.value
+      ).toFixed(2)}`;
+      tipTotal!.innerText = `$${((+billInput?.value * activeTip) / 100).toFixed(2)}`;
+    } else {
+      tipAmount!.innerText = '$0.00';
+      tipTotal!.innerText = '$0.00';
+    }
+  }
+
+  function updateTipsButtons(currentButton: EventTarget | null) {
+    [...(tips?.children || [])].forEach(({ firstElementChild }) => {
+      if (firstElementChild === currentButton) {
+        firstElementChild?.classList.add('active-tip');
+      } else {
+        firstElementChild?.classList.remove('active-tip');
+      }
+    });
+  }
+
+  function resetForm() {
+    activeTip = 0;
+    updateTipsButtons(null);
+    billInput.value = '';
+    numberOfPeopleInput.value = '1';
+    customTip.value = '';
+    updateDisplay();
+  }
 </script>
 
 <style>
@@ -172,5 +256,10 @@ import Layout from '../layouts/Layout.astro';
 
   .number-of-people-error {
     display: initial !important;
+  }
+
+  .active-tip {
+    background-color: #99f6e4 !important;
+    color: #115e59 !important;
   }
 </style>
