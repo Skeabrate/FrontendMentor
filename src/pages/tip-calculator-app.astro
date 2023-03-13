@@ -86,11 +86,20 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
 
-        <label
-          for='number-of-people'
-          class='font-bold text-neutral-400'
-          >Number of People</label
-        >
+        <div class='flex justify-between'>
+          <label
+            for='number-of-people'
+            class='font-bold text-neutral-400'
+            >Number of People</label
+          >
+
+          <p
+            class='hidden font-bold text-red-400'
+            id='number-of-people-error'
+          >
+            Can't be zero
+          </p>
+        </div>
         <div class='relative'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -105,7 +114,11 @@ import Layout from '../layouts/Layout.astro';
           <input
             id='number-of-people'
             type='number'
-            placeholder='0'
+            placeholder='1'
+            value='1'
+            min='0'
+            step='1'
+            oninput="validity.valid||(value='');"
             class='mt-2 w-full rounded-md bg-neutral-200 px-1 py-2 text-right font-bold text-teal-800 focus:outline-teal-400'
           />
         </div>
@@ -136,3 +149,28 @@ import Layout from '../layouts/Layout.astro';
     </section>
   </main>
 </Layout>
+
+<script>
+  const numberOfPeopleInput = document.getElementById('number-of-people');
+  const numberOfPeopleError = document.getElementById('number-of-people-error');
+
+  numberOfPeopleInput?.addEventListener('input', (event) => {
+    if (!(event.target as HTMLInputElement).valueAsNumber) {
+      numberOfPeopleInput.classList.add('input-error');
+      numberOfPeopleError?.classList.add('number-of-people-error');
+    } else {
+      numberOfPeopleInput.classList.remove('input-error');
+      numberOfPeopleError?.classList.remove('number-of-people-error');
+    }
+  });
+</script>
+
+<style>
+  .input-error {
+    outline-color: #f87171 !important;
+  }
+
+  .number-of-people-error {
+    display: initial !important;
+  }
+</style>
