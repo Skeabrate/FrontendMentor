@@ -25,17 +25,17 @@ import Layout from '../layouts/Layout.astro';
     >
 
     <div class='relative z-10 flex min-h-screen flex-col items-center justify-center py-10 px-4'>
-      <h1 class='mb-6 text-xl font-bold text-slate-500'>Our Pricing</h1>
+      <h1 class='mb-6 text-xl font-bold text-slate-500 md:text-2xl'>Our Pricing</h1>
 
-      <div class='mb-10'>
+      <div class='mb-10 md:mb-16'>
         Annually
         <button>button</button>
         Monthly
       </div>
 
-      <section class='grid gap-6 md:grid-cols-3'>
-        <div class='rounded-lg bg-indigo-50 p-6 text-slate-700 shadow-md'>
-          <h2 class='text-xs font-bold'>Basic</h2>
+      <section class='grid gap-6 md:grid-cols-3 md:gap-0'>
+        <div class='rounded-lg rounded-r-none bg-indigo-50 p-6 text-slate-700 shadow-md md:w-64'>
+          <h2 class='text-xs font-bold md:text-sm'>Basic</h2>
           <h3 class='mt-4 mb-6 text-5xl font-bold'>$199.99</h3>
 
           <ul>
@@ -44,15 +44,15 @@ import Layout from '../layouts/Layout.astro';
             <li class='border-b border-indigo-200 py-3 text-xs font-semibold'>Send up to 3GB</li>
           </ul>
           <button
-            class='mt-6 w-full rounded-md bg-gradient-to-l from-indigo-400 to-indigo-300 py-2 text-xs font-semibold tracking-wider text-indigo-50'
+            class='mt-6 w-full rounded-sm bg-gradient-to-l from-indigo-400 to-indigo-300 py-2 text-xs font-semibold tracking-wider text-indigo-50'
             >LEARN MORE</button
           >
         </div>
 
         <div
-          class='rounded-lg bg-gradient-to-t from-indigo-400 to-indigo-300 p-6 text-indigo-50 shadow-md'
+          class='relative z-10 rounded-lg bg-gradient-to-t from-indigo-400 to-indigo-300 p-6 text-indigo-50 after:absolute after:top-0 after:left-0 after:-z-10 after:hidden after:h-full after:w-full after:origin-center after:scale-y-110 after:rounded-md after:bg-gradient-to-t after:from-indigo-400 after:to-indigo-300 after:shadow-md md:after:block'
         >
-          <h2 class='text-xs font-bold'>Professional</h2>
+          <h2 class='text-xs font-bold md:text-sm'>Professional</h2>
           <h3 class='mt-4 mb-6 text-5xl font-bold'>$249.99</h3>
 
           <ul>
@@ -61,13 +61,13 @@ import Layout from '../layouts/Layout.astro';
             <li class='border-b border-indigo-300 py-3 text-xs font-semibold'>Send up to 10GB</li>
           </ul>
           <button
-            class='mt-6 w-full rounded-md bg-white py-2 text-xs font-bold leading-4 tracking-wider text-indigo-500'
+            class='mt-6 w-full rounded-sm bg-white py-2 text-xs font-bold leading-4 tracking-wider text-indigo-500'
             >LEARN MORE</button
           >
         </div>
 
-        <div class='rounded-lg bg-indigo-50 p-6 text-slate-700 shadow-md'>
-          <h2 class='text-xs font-bold'>Master</h2>
+        <div class='rounded-lg rounded-l-none bg-indigo-50 p-6 text-slate-700 shadow-md'>
+          <h2 class='text-xs font-bold md:text-sm'>Master</h2>
           <h3 class='mt-4 mb-6 text-5xl font-bold'>$399.99</h3>
 
           <ul>
@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
             <li class='border-b border-indigo-200 py-3 text-xs font-semibold'>Send up to 20GB</li>
           </ul>
           <button
-            class='mt-6 w-full rounded-md bg-gradient-to-l from-indigo-400 to-indigo-300 py-2 text-xs font-semibold tracking-wider text-indigo-50'
+            class='mt-6 w-full rounded-sm bg-gradient-to-l from-indigo-400 to-indigo-300 py-2 text-xs font-semibold tracking-wider text-indigo-50'
             >LEARN MORE</button
           >
         </div>
