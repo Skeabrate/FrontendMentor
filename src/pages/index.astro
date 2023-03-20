@@ -43,40 +43,12 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  import { PROJECTS } from '../Projects';
+
   const projectsContainer = document.getElementById('projects-container');
 
-  const projects = [
-    {
-      title: 'E-commerce product page',
-      frontEndMentorUrl:
-        'https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6',
-      projectUrl: 'ecommerce-product-page',
-      img: 'ecommerce.png',
-    },
-    {
-      title: 'Tip calculator app',
-      frontEndMentorUrl: 'https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX',
-      projectUrl: 'tip-calculator-app',
-      img: 'tip-calculator.png',
-    },
-    {
-      title: 'Results summary component',
-      frontEndMentorUrl:
-        'https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV',
-      projectUrl: 'results-summary-component',
-      img: 'results-summary.png',
-    },
-    {
-      title: 'Pricing component with toggle',
-      frontEndMentorUrl:
-        'https://www.frontendmentor.io/challenges/pricing-component-with-toggle-8vPwRMIC',
-      projectUrl: 'pricing-component',
-      img: 'pricing-component.png',
-    },
-  ];
-
   (function () {
-    projects.forEach(({ title, frontEndMentorUrl, projectUrl, img }, idx) => {
+    PROJECTS.forEach(({ title, frontEndMentorUrl, projectUrl, img }, idx) => {
       const newProject = document.createElement('section');
       newProject.innerHTML = `
 				<h3 class='mb-4 grid grid-cols-[56px_auto] items-center gap-3 sm:gap-5'>
