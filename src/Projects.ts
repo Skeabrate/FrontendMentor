@@ -6,6 +6,13 @@ export const PROJECTS = [
     img: 'ecommerce.png',
   },
   {
+    title: 'Sunnyside agency',
+    frontEndMentorUrl:
+      'https://www.frontendmentor.io/challenges/sunnyside-agency-landing-page-7yVs3B6ef',
+    projectUrl: 'sunnyside-agency',
+    img: 'sunnyside-agency.png',
+  },
+  {
     title: 'Tip calculator app',
     frontEndMentorUrl: 'https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX',
     projectUrl: 'tip-calculator-app',
