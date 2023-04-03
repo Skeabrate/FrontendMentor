@@ -26,7 +26,7 @@ export const PROJECTS = [
     img: 'results-summary.png',
   },
   {
-    title: 'Pricing component with toggle',
+    title: 'Pricing component',
     frontEndMentorUrl:
       'https://www.frontendmentor.io/challenges/pricing-component-with-toggle-8vPwRMIC',
     projectUrl: 'pricing-component',

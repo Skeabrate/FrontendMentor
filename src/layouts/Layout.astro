@@ -32,11 +32,11 @@ const { title } = Astro.props;
     >
       <ul
         id='navigation'
-        class='top-full flex w-60 flex-col gap-2 bg-black px-4 pt-4 pb-8 text-white transition-transform duration-300'
+        class='top-full flex max-h-[calc(100vh-120px)] w-60 flex-col gap-2 overflow-y-auto rounded-br-md bg-slate-900 p-2 text-white transition-transform duration-300'
       >
-        <li>
+        <li class='flex'>
           <a
-            class='underline'
+            class='transition-color h-full w-full rounded-md bg-slate-800 py-2 px-4 text-sm font-bold hover:bg-sky-800'
             href='/'
             >Home</a
           >
@@ -45,7 +45,7 @@ const { title } = Astro.props;
 
       <button
         id='hamburger'
-        class='absolute top-0 -right-14 flex h-14 w-14 items-center justify-center bg-black'
+        class='absolute top-0 -right-14 flex h-14 w-14 items-center justify-center rounded-r-md bg-slate-900'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -77,10 +77,10 @@ const { title } = Astro.props;
     PROJECTS.forEach(({ title, projectUrl }, idx) => {
       const newLink = document.createElement('section');
       newLink.innerHTML = `
-				<li>
+				<li class='flex'>
           <a
+						class='h-full w-full rounded-md bg-slate-800 py-2 px-4 text-sm font-bold hover:bg-sky-800 transition-color'
             href='${projectUrl}'
-            class='underline'
             >${title}</a
           >
         </li>
