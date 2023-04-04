@@ -1,5 +1,12 @@
 export const PROJECTS = [
   {
+    title: 'Bookmark landing page',
+    frontEndMentorUrl:
+      'https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158',
+    projectUrl: 'bookmark-landing-page',
+    img: 'bookmark.png',
+  },
+  {
     title: 'E-commerce product page',
     frontEndMentorUrl: 'https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6',
     projectUrl: 'ecommerce-product-page',
