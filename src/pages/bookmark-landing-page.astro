@@ -13,7 +13,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
 ---
 
 <Layout title='Bookmark Landing Page'>
-  <nav class='flex max-w-6xl items-center justify-between px-4 py-4 sm:p-8'>
+  <nav class='mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:p-8'>
     <button>
       <Logo />
     </button>
@@ -154,32 +154,39 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
     </section>
   </main>
 
-  <footer>
-    <div>
-      <p>35,000+ already joined</p>
-      <h2>Stay up-to-date with waht we're doing</h2>
+  <footer class='bg-indigo-500 text-white'>
+    <div class='flex flex-col items-center px-4 py-16 text-center'>
+      <p class='mb-2 text-sm uppercase tracking-widest sm:mb-4'>35,000+ already joined</p>
+      <h2 class='mb-6 text-2xl font-semibold sm:mb-8'>
+        Stay up-to-date with what <br /> we're doing
+      </h2>
 
-      <div>
+      <div class='flex w-full flex-col gap-4 sm:w-96 sm:flex-row sm:gap-3'>
         <input
+          class='h-12 w-full rounded px-4 text-black placeholder-zinc-300'
           type='text'
           placeholder='Enter your email address'
         />
-        <button>Contact Us</button>
+        <button class='h-12 w-full rounded bg-red-400 text-sm font-semibold sm:w-48'
+          >Contact Us</button
+        >
       </div>
     </div>
 
-    <div>
-      <ul>
-        <li><Logo /></li>
-        <li>FEATURES</li>
-        <li>PRICING</li>
-        <li>CONTACT</li>
-      </ul>
+    <div class='bg-slate-800 px-4 py-8 sm:p-8'>
+      <div class='mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 sm:flex-row'>
+        <ul class='flex flex-col items-center gap-6 text-sm sm:flex-row sm:gap-8'>
+          <li><Logo isWhite /></li>
+          <li>FEATURES</li>
+          <li>PRICING</li>
+          <li>CONTACT</li>
+        </ul>
 
-      <ul>
-        <li><Facebook /></li>
-        <li><Twitter /></li>
-      </ul>
+        <ul class='flex items-center gap-8'>
+          <li><Facebook /></li>
+          <li><Twitter /></li>
+        </ul>
+      </div>
     </div>
   </footer>
 </Layout>
