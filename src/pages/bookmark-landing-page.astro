@@ -13,7 +13,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
 ---
 
 <Layout title='Bookmark Landing Page'>
-  <nav class='mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 sm:p-8'>
+  <nav class='mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 md:p-8'>
     <button>
       <Logo />
     </button>
@@ -22,7 +22,12 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
       <li class='py-2'>FEATURES</li>
       <li class='py-2'>PRICING</li>
       <li class='py-2'>CONTACT</li>
-      <li class='rounded-md bg-red-400 px-5 py-2 font-semibold text-white shadow-sm'>LOGIN</li>
+      <li>
+        <button
+          class='rounded-md bg-red-400 px-5 py-2 font-semibold text-white shadow-sm hover:bg-white hover:text-red-400 hover:outline hover:outline-2 hover:outline-red-400'
+          >LOGIN</button
+        >
+      </li>
     </ul>
 
     <button class='sm:hidden'>
@@ -40,7 +45,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
         </div>
       </div>
 
-      <article class='ml-auto max-w-[600px] px-4 text-center sm:row-start-1 sm:px-8 sm:text-left'>
+      <article class='ml-auto max-w-[600px] px-4 text-center sm:row-start-1 sm:text-left md:px-8'>
         <h1 class='text-3xl font-bold sm:text-4xl'>A Simple Bookmark Manager</h1>
         <p class='pt-6 pb-8 text-zinc-400'>
           A clean and simple interface to organize your favourite websites. Open a new browser tab
@@ -69,22 +74,34 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
           </p>
         </div>
 
-        <ul class='mx-auto flex w-full max-w-2xl flex-col sm:flex-row'>
-          <li class='w-full'>
+        <ul
+          id='tabs-bar'
+          class='mx-auto flex w-full max-w-2xl flex-col sm:flex-row'
+        >
+          <li
+            id='Simple Bookmarking'
+            class='w-full'
+          >
             <button
-              class='relative h-full w-full border-b border-t border-zinc-300 py-4 text-zinc-500 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-400 hover:text-red-400 sm:border-t-0 sm:py-5'
+              class='h-full w-full border-b border-t border-zinc-300 py-4 text-zinc-500 hover:text-red-400 sm:border-t-0 sm:py-5'
               >Simple Bookmarking</button
             >
           </li>
-          <li class='w-full'>
+          <li
+            id='Speedy Searching'
+            class='w-full'
+          >
             <button
-              class='relative h-full w-full border-b border-zinc-300 py-4 text-zinc-500 hover:text-red-400 sm:py-5'
+              class='h-full w-full border-b border-zinc-300 py-4 text-zinc-500 hover:text-red-400 sm:py-5'
               >Speedy Searching</button
             >
           </li>
-          <li class='w-full'>
+          <li
+            id='Easy Sharing'
+            class='w-full'
+          >
             <button
-              class='relative h-full w-full border-b border-zinc-300 py-4 text-zinc-500 hover:text-red-400 sm:py-5'
+              class='h-full w-full border-b border-zinc-300 py-4 text-zinc-500 hover:text-red-400 sm:py-5'
               >Easy Sharing</button
             >
           </li>
@@ -100,9 +117,17 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
           </div>
         </div>
 
-        <div class='max-w-[600px] px-4 text-center sm:px-8 sm:text-left md:pt-8'>
-          <h3 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Bookmark in one click</h3>
-          <p class='mb-6 text-zinc-400'>
+        <div class='max-w-[600px] px-4 text-center sm:text-left md:px-8 md:pt-8'>
+          <h3
+            id='tab-title'
+            class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'
+          >
+            Bookmark in one click
+          </h3>
+          <p
+            id='tab-description'
+            class='mb-6 text-zinc-400'
+          >
             Organize your bookmarks however you like. Our simple drag-and-drop interface gives you
             complete control over how you manage your favourite sites.
           </p>
@@ -114,7 +139,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
       </article>
     </section>
 
-    <section class='mb-28 px-4 text-center sm:px-8'>
+    <section class='mb-28 px-4 text-center md:px-8'>
       <div class='sm:mx-auto sm:max-w-lg'>
         <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Download the extension</h2>
         <p class='mb-8 text-zinc-400 sm:mb-12'>
@@ -289,27 +314,91 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
     margin-left: 5px;
   }
 
-  /* .active {
-    background-color: #ccc;
-  } */
-
   .active:after {
     content: '\2796';
+  }
+
+  .active-tab {
+    font-weight: 700;
+    color: rgb(80, 80, 80);
+    position: relative;
+  }
+
+  .active-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: #f87171;
   }
 </style>
 
 <script>
-  const accordion: HTMLCollection = document.getElementsByClassName('accordion');
+  type TTab = {
+    id: string;
+    title: string;
+    description: string;
+  };
 
-  [...accordion].forEach((question) => {
-    question.addEventListener('click', () => {
-      question.classList.toggle('active');
-      let panel = question.nextElementSibling as HTMLElement;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = '';
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
+  const tabsBar = document.getElementById('tabs-bar') as HTMLUListElement;
+  const tabTitle = document.getElementById('tab-title') as HTMLElement;
+  const tabDescription = document.getElementById('tab-description') as HTMLElement;
+  const tabs: TTab[] = [
+    {
+      id: 'Simple Bookmarking',
+      title: 'Bookmark in one click',
+      description:
+        'Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.',
+    },
+    {
+      id: 'Speedy Searching',
+      title: 'Intelligent search',
+      description:
+        'Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.',
+    },
+    {
+      id: 'Easy Sharing',
+      title: 'Share your bookmarks',
+      description:
+        'Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.',
+    },
+  ];
+
+  handleAccordion();
+  setActiveTab(tabs[0]);
+
+  [...tabsBar.children].forEach((button) => {
+    button.addEventListener('click', () => {
+      const newTab = tabs.find((tab) => tab.id === button.id) as TTab;
+      setActiveTab(newTab);
     });
   });
+
+  function setActiveTab(activeTab: TTab) {
+    [...tabsBar.children].forEach((button) => {
+      if (button.id === activeTab.id) button.classList.add('active-tab');
+      else button.classList.remove('active-tab');
+    });
+
+    tabTitle.innerText = activeTab.title;
+    tabDescription.innerText = activeTab.description;
+  }
+
+  function handleAccordion() {
+    const accordion: HTMLCollection = document.getElementsByClassName('accordion');
+
+    [...accordion].forEach((question) => {
+      question.addEventListener('click', () => {
+        question.classList.toggle('active');
+        let panel = question.nextElementSibling as HTMLElement;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = '';
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+  }
 </script>
