@@ -13,7 +13,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
 ---
 
 <Layout title='Bookmark Landing Page'>
-  <nav class='mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:p-8'>
+  <nav class='mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 sm:p-8'>
     <button>
       <Logo />
     </button>
@@ -30,26 +30,29 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
     </button>
   </nav>
 
-  <main>
-    <section class='mt-10 mb-28 flex max-w-full flex-col'>
+  <main class='w-full overflow-hidden'>
+    <section class='mt-10 mb-28 grid max-w-full flex-col items-center sm:mx-auto sm:grid-cols-2'>
       <div
-        class='relative mb-8 after:absolute after:bottom-0 after:right-0 after:-z-10 after:h-3/4 after:w-3/4 after:rounded-l-[100px] after:bg-indigo-500'
+        class='relative mb-8 after:absolute after:bottom-0 after:right-0 after:-z-10 after:h-3/4 after:w-3/4 after:rounded-l-[100px] after:bg-indigo-500 sm:col-start-2 lg:after:-right-48 lg:after:w-full'
       >
-        <ImgHero />
+        <div class='max-w-[600px]'>
+          <ImgHero />
+        </div>
       </div>
-      <article class='px-4 text-center sm:text-left'>
+
+      <article class='ml-auto max-w-[600px] px-4 text-center sm:row-start-1 sm:px-8 sm:text-left'>
         <h1 class='text-3xl font-bold sm:text-4xl'>A Simple Bookmark Manager</h1>
         <p class='pt-6 pb-8 text-zinc-400'>
           A clean and simple interface to organize your favourite websites. Open a new browser tab
           and see your sites load instantly. Try it for free.
         </p>
-        <div class='flex justify-center gap-3 sm:justify-start sm:gap-4'>
+        <div class='flex justify-center gap-3 sm:justify-start lg:gap-5'>
           <button
-            class='rounded bg-indigo-500 px-3 py-3 text-sm font-semibold text-white shadow-md sm:px-4'
+            class='rounded bg-indigo-500 px-3 py-3 text-sm font-semibold text-white shadow-md lg:px-6'
             >Get it on Chrome</button
           >
           <button
-            class='rounded bg-zinc-100 px-3 py-3 text-sm font-semibold text-zinc-700 shadow-md sm:px-4'
+            class='rounded bg-zinc-100 px-3 py-3 text-sm font-semibold text-zinc-700 shadow-md lg:px-6'
             >Get it on Firefox</button
           >
         </div>
@@ -57,58 +60,72 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
     </section>
 
     <section class='mb-28'>
-      <article class='mb-14 px-4 text-center sm:mx-auto sm:max-w-lg'>
-        <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Features</h2>
-        <p class='mb-10 text-zinc-400'>
-          Our aim is to make it quick and easy for you to access your favourite websites. Your
-          bookmarks sync between your devices so you can access them on the go.
-        </p>
-        <ul class='flex flex-col sm:flex-row'>
-          <li>
+      <article class='mb-14 px-4 text-center'>
+        <div class='sm:mx-auto sm:max-w-lg'>
+          <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Features</h2>
+          <p class='mb-10 text-zinc-400'>
+            Our aim is to make it quick and easy for you to access your favourite websites. Your
+            bookmarks sync between your devices so you can access them on the go.
+          </p>
+        </div>
+
+        <ul class='mx-auto flex w-full max-w-2xl flex-col sm:flex-row'>
+          <li class='w-full'>
             <button
-              class='h-full w-full border-b border-t border-zinc-300 py-4 text-zinc-500 sm:border-t-0'
+              class='relative h-full w-full border-b border-t border-zinc-300 py-4 text-zinc-500 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-400 sm:border-t-0 sm:py-5'
               >Simple Bookmarking</button
             >
           </li>
-          <li>
-            <button class='h-full w-full border-b border-zinc-300 py-4 text-zinc-500'
+          <li class='w-full'>
+            <button
+              class='relative h-full w-full border-b border-zinc-300 py-4 text-zinc-500 sm:py-5'
               >Speedy Searching</button
             >
           </li>
-          <li>
-            <button class='h-full w-full border-b border-zinc-300 py-4 text-zinc-500'
+          <li class='w-full'>
+            <button
+              class='relative h-full w-full border-b border-zinc-300 py-4 text-zinc-500 sm:py-5'
               >Easy Sharing</button
             >
           </li>
         </ul>
       </article>
 
-      <article>
+      <article class='grid sm:grid-cols-2'>
         <div
-          class='relative mb-10 pb-10 after:absolute after:bottom-0 after:left-0 after:-z-10 after:h-3/4 after:w-3/4 after:rounded-r-[150px] after:bg-indigo-500'
+          class='relative mb-10 pb-14 after:absolute after:bottom-0 after:left-0 after:-z-10 after:h-3/4 after:w-3/4 after:rounded-r-[150px] after:bg-indigo-500 lg:after:-left-28 lg:after:w-full'
         >
-          <ImgTab1 />
+          <div class='ml-auto max-w-[600px]'>
+            <ImgTab1 />
+          </div>
         </div>
-        <div class='px-4 text-center'>
+
+        <div class='max-w-[600px] px-4 text-center sm:px-8 sm:text-left md:pt-8'>
           <h3 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Bookmark in one click</h3>
-          <p class='text-zinc-400'>
+          <p class='mb-6 text-zinc-400'>
             Organize your bookmarks however you like. Our simple drag-and-drop interface gives you
             complete control over how you manage your favourite sites.
           </p>
+          <button
+            class='mx-auto rounded bg-indigo-500 py-3 px-5 text-sm font-semibold text-white shadow-md'
+            >More Info</button
+          >
         </div>
       </article>
     </section>
 
-    <section class='mb-28 px-4 text-center'>
-      <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Download the extension</h2>
-      <p class='mb-8 text-zinc-400'>
-        We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite
-        you’d like us to prioritize.
-      </p>
+    <section class='mb-28 px-4 text-center sm:px-8'>
+      <div class='sm:mx-auto sm:max-w-lg'>
+        <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Download the extension</h2>
+        <p class='mb-8 text-zinc-400 sm:mb-12'>
+          We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite
+          you’d like us to prioritize.
+        </p>
+      </div>
 
-      <div class='flex flex-col items-center gap-8'>
+      <div class='mx-auto grid max-w-4xl justify-center gap-8 md:grid-cols-3 md:gap-4'>
         <div
-          class='flex max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg'
+          class='flex h-fit max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg'
         >
           <Chrome />
           <h3 class='mt-6 text-xl font-semibold'>Add to Chrome</h3>
@@ -123,7 +140,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
         </div>
 
         <div
-          class='flex max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg'
+          class='flex h-fit max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg sm:mt-7'
         >
           <Firefox />
           <h3 class='mt-6 text-xl font-semibold'>Add to Firefox</h3>
@@ -138,7 +155,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
         </div>
 
         <div
-          class='flex max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg'
+          class='flex h-fit max-w-[280px] flex-col items-center overflow-hidden rounded-xl pt-12 shadow-lg sm:mt-14'
         >
           <Opera />
           <h3 class='mt-6 text-xl font-semibold'>Add to Opera</h3>
@@ -154,7 +171,7 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
       </div>
     </section>
 
-    <section class='mb-28 flex flex-col px-4'>
+    <section class='mb-28 flex flex-col px-4 sm:mx-auto sm:max-w-lg'>
       <div class='text-center'>
         <h2 class='mb-2 text-2xl font-semibold sm:mb-4 sm:text-3xl'>Frequently Asked Question</h2>
         <p class='mb-12 text-zinc-400'>
@@ -163,9 +180,9 @@ import Twitter from '../resources/bookmark-landing-page-master/images/Twitter.as
         </p>
       </div>
 
-      <div class='mb-10'>
+      <div class='mb-12'>
         <button
-          class='accordion flex w-full justify-between py-4 text-left font-semibold text-zinc-700'
+          class='accordion flex w-full justify-between border-t border-zinc-300 py-4 text-left font-semibold text-zinc-700'
           >What is Bookmark?</button
         >
         <div
