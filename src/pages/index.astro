@@ -29,12 +29,12 @@ import Layout from '../layouts/Layout.astro';
         </a>
       </header>
 
-      <div class='mx-auto max-w-xl'>
+      <div>
         <h2 class='mb-8 text-xl font-semibold'>Completed challanges:</h2>
 
         <div
           id='projects-container'
-          class='grid gap-16'
+          class='grid gap-y-16 gap-x-12 md:grid-cols-2 lg:gap-x-16 lg:gap-y-20'
         >
         </div>
       </div>
@@ -61,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
 						<a
 							href='${frontEndMentorUrl}'
 							target='_blank'
-							class='break-all text-xs text-red-200 italic underline'
+							class='break-all text-xs text-slate-300 italic underline'
 							>${frontEndMentorUrl}</a
 						>
 					</div>
