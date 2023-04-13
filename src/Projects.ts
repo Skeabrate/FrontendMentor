@@ -7,6 +7,13 @@ export const PROJECTS = [
     img: 'bookmark.png',
   },
   {
+    title: 'Chat app CSS illustration',
+    frontEndMentorUrl:
+      'https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY',
+    projectUrl: 'chat-app',
+    img: 'chat-app.png',
+  },
+  {
     title: 'E-commerce product page',
     frontEndMentorUrl: 'https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6',
     projectUrl: 'ecommerce-product-page',

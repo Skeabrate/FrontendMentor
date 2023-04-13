@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title='Chat App CSS Illustration'>
+  <main
+    class='flex min-h-screen flex-col items-center justify-center gap-24 py-14 px-4 lg:flex-row'
+  >
+    <div class='w-full rounded-[35px] p-3 text-xs shadow-2xl sm:w-96'>
+      <div class='rounded-[35px] bg-purple-50'>
+        <div
+          class='rounded-t-[35px] rounded-b-lg bg-gradient-to-r from-purple-600 to-fuchsia-500 text-white'
+        >
+          <div class='mx-auto h-7 w-3/5 rounded-b-[20px] bg-white'></div>
+
+          <div class='flex justify-between p-4'>
+            <div class='flex items-center justify-center gap-4'>
+              <div class='h-10 w-10 overflow-hidden rounded-full border-2 border-white'>
+                <img
+                  src='chat-app/avatar.jpg'
+                  alt='avatar'
+                  class='object-contain'
+                />
+              </div>
+
+              <div class='flex h-full flex-col justify-between'>
+                <h2 class='text-lg'>Samuel Green</h2>
+                <p class='text-zinc-100'>Available to Walk</p>
+              </div>
+            </div>
+
+            <div class='flex flex-col items-center justify-center gap-[2px]'>
+              <p class='h-1 w-1 rounded-full bg-white'></p>
+              <p class='h-1 w-1 rounded-full bg-white'></p>
+              <p class='h-1 w-1 rounded-full bg-white'></p>
+            </div>
+          </div>
+        </div>
+
+        <div class='px-3 py-5'>
+          <p
+            class='mb-3 w-fit max-w-[60%] rounded-2xl rounded-bl-md bg-purple-100 px-3 py-2 text-purple-800'
+          >
+            That sounds great. I’d be happy with that.
+          </p>
+          <p
+            class='mb-6 w-fit max-w-[60%] rounded-2xl rounded-bl-md bg-purple-100 px-3 py-2 text-purple-800'
+          >
+            Could you send over some pictures of your dog, please?
+          </p>
+
+          <div class='mb-3 ml-auto flex w-fit gap-3'>
+            <div class='w-16 overflow-hidden rounded-2xl shadow-md'>
+              <img
+                src='chat-app/dog-image-1.jpg'
+                alt='avatar'
+                class='object-contain'
+              />
+            </div>
+
+            <div class='w-16 overflow-hidden rounded-2xl shadow-md'>
+              <img
+                src='chat-app/dog-image-2.jpg'
+                alt='avatar'
+                class='object-contain'
+              />
+            </div>
+
+            <div class='w-16 overflow-hidden rounded-2xl shadow-md'>
+              <img
+                src='chat-app/dog-image-3.jpg'
+                alt='avatar'
+                class='object-contain'
+              />
+            </div>
+          </div>
+          <p
+            class='mb-3 ml-auto w-fit max-w-[60%] rounded-2xl rounded-br-md bg-white px-3 py-2 text-zinc-500 shadow-sm'
+          >
+            Here are a few pictures. She’s a happy girl!
+          </p>
+          <p
+            class='mb-6 ml-auto w-fit max-w-[60%] rounded-2xl rounded-br-md bg-white px-3 py-2 text-zinc-500 shadow-sm'
+          >
+            Can you make it?
+          </p>
+
+          <p
+            class='mb-3 w-fit max-w-[60%] rounded-2xl rounded-bl-md bg-purple-100 px-3 py-2 text-purple-800'
+          >
+            She looks so happy! The time we discussed works. How long shall I take her out for?
+          </p>
+
+          <div
+            class='mb-3 flex w-4/6 justify-between rounded-2xl rounded-bl-md bg-gradient-to-r from-fuchsia-500 to-purple-600 px-3 py-2 pr-5 text-white'
+          >
+            <div class='flex items-center gap-3'>
+              <p class='h-4 w-4 rounded-full border border-white'></p>
+              30 minute walk
+            </div>
+
+            <span class='text-xl font-extrabold'> $29</span>
+          </div>
+
+          <div
+            class='flex w-4/6 justify-between rounded-2xl rounded-bl-md bg-gradient-to-r from-fuchsia-500 to-purple-600 px-3 py-2 pr-5 text-white'
+          >
+            <div class='flex items-center gap-3'>
+              <p class='h-4 w-4 rounded-full border border-white'></p>
+              1 hour walk
+            </div>
+
+            <span class='text-xl font-extrabold'> $49</span>
+          </div>
+
+          <div
+            class='mt-6 flex items-center justify-between rounded-full bg-white py-2 pr-2 pl-8 text-zinc-300'
+          >
+            type a message ...
+
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              class='h-full fill-purple-900'
+              height='24'
+              width='24'
+              ><path
+                d='M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z'
+              ></path></svg
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class='max-w-md text-center lg:text-left'>
+      <h1 class='mb-8 text-5xl font-bold text-purple-900'>Simple booking</h1>
+      <p class='text-purple-900/50'>
+        Stay in touch with our dog walkers through the chat interface. This makes it easy to discuss
+        arrangements and make bookings. Once the walk has been completed you can rate your walker
+        and book again all through the chat.
+      </p>
+    </section>
+  </main>
+</Layout>
